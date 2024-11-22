@@ -224,10 +224,7 @@ int main()
     srand(time(NULL)); // primo para gerar números aleatórios
 
 #define NUM_CASAS 30 
-//Tentei usar uma variável para definir os tamanhos mas disparava um warning referente constantes. 
-//Pesquisando um pouco achei sobre os macros e resolvi utilizá-lo neste contexto
-//Porém, como não foi visto no conteúdo, caso ache necessário é possível alterar para uma variável 
-//ou onde foi informado NUM_CASAS passar o valor fixo, neste contexto, 30.
+
 
 
     Casa tabuleiro[NUM_CASAS];
