@@ -131,10 +131,10 @@ int jogar_dado()
     return x;
 }
 
-void inicializar_tabuleiro(Casa tabuleiro[], int NUM_CASAS)
+void inicializar_tabuleiro(Casa tabuleiro[], int num_casas)
 {
-    // Inicializa as casas do tabuleiro baseado no parametro NUM_CASAS
-    for (int i = 0; i < NUM_CASAS; i++)
+    // Inicializa as casas do tabuleiro baseado no parametro num_casas
+    for (int i = 0; i < num_casas; i++)
     {
         tabuleiro[i].numero = i;
         tabuleiro[i].especial = 0;
@@ -148,7 +148,7 @@ void inicializar_tabuleiro(Casa tabuleiro[], int NUM_CASAS)
     }
 }
 
-void iniciarJogo(Fila *jogadores, Casa tabuleiro[], int NUM_CASAS, Pilha *cartas)
+void iniciarJogo(Fila *jogadores, Casa tabuleiro[], int num_casas, Pilha *cartas)
 {
     while (1)
     {
@@ -176,7 +176,7 @@ void iniciarJogo(Fila *jogadores, Casa tabuleiro[], int NUM_CASAS, Pilha *cartas
         printf("%s estava na casa %d\n", jogador.nome, jogador.posicao);
         jogador.posicao += dado;
 
-        if (jogador.posicao >= NUM_CASAS)
+        if (jogador.posicao >= num_casas)
         {
             printf("%s venceu o jogo!\n", jogador.nome);
             break;
@@ -198,9 +198,9 @@ void iniciarJogo(Fila *jogadores, Casa tabuleiro[], int NUM_CASAS, Pilha *cartas
                 {
                     jogador.posicao = 0;
                 }
-                else if (jogador.posicao >= NUM_CASAS)
+                else if (jogador.posicao >= num_casas)
                 {
-                    jogador.posicao = NUM_CASAS - 1;
+                    jogador.posicao = num_casas - 1;
                 }
 
                 if (carta.acao == 0) // Se a ação for 0, fica uma rodada sem jogar
@@ -221,14 +221,11 @@ void iniciarJogo(Fila *jogadores, Casa tabuleiro[], int NUM_CASAS, Pilha *cartas
 
 int main()
 {
-    srand(time(NULL)); // primo para gerar números aleatórios
+    srand(time(NULL)); // primordial para gerar números aleatórios
 
-#define NUM_CASAS 30 
-
-
-
-    Casa tabuleiro[NUM_CASAS];
-    inicializar_tabuleiro(tabuleiro, NUM_CASAS);
+    const int num_casas = 30; // Número de casas do tabuleiro
+    Casa tabuleiro[num_casas]; // Cria e define o tamanho que o tabuleiro possuira
+    inicializar_tabuleiro(tabuleiro, num_casas); // Inicializa o tabuleiro, populando as casas
 
     // Cria a fila e a pilha
     Fila jogadores;
@@ -255,7 +252,7 @@ int main()
     empilharCarta(&cartas, carta3);
 
     // Inicia o jogo
-    iniciarJogo(&jogadores, tabuleiro, NUM_CASAS, &cartas);
+    iniciarJogo(&jogadores, tabuleiro, num_casas, &cartas);
 
     return 0;
 }
